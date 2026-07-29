@@ -5,17 +5,18 @@
 
     <!-- Public plugin name should be written in Title Case.
      Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
-    <name>Ai-agent-test</name>
+    <name>IA Agent Test</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor url="https://www.yourcompany.com">YourCompany</vendor>
+    <vendor url="https://github.com/camicalle">Camiliño Calle</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
     <description><![CDATA[
-        Enter short description for your plugin here.<br>
-        <em>most HTML tags may be used</em>
-        ]]></description>
+        Distribuye y mantiene actualizado el agente AI de pruebas en tu proyecto.
+        Estandariza las buenas prácticas del equipo a través de archivos Markdown
+        que la IA de tu editor lee para entender cómo trabajar correctamente.
+    ]]></description>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
@@ -26,8 +27,24 @@
     <!-- Extensions defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="MyToolWindow" factoryClass="com.camilocalle.MyToolWindowFactory"
-                    icon="AllIcons.Toolwindows.ToolWindowPalette"/>
+        <postStartupActivity
+                implementation="com.camilocalle.AgentStartupActivity"/>
     </extensions>
+
+    <actions>
+        <action id="com.camilocalle.`InitializeAgentAction.kt`"
+                class="com.camilocalle.InitializeAgentAction"
+                text="Initialize Agent Test"
+                description="Copia la carpeta del agente AI al proyecto actual">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+
+        <action id="com.camilocalle.RemoveAgentAction"
+                class="com.camilocalle.RemoveAgentAction"
+                text="Remove Agent Test"
+                description="Elimina la carpeta del agente AI del proyecto actual">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
 
 </idea-plugin>
