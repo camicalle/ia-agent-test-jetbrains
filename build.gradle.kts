@@ -19,3 +19,11 @@ dependencies {
         // bundledPlugin("com.intellij.java")
     }
 }
+
+tasks {
+    buildPlugin {
+        from("src/main/resources/META-INF") {
+            into("META-INF")
+        }
+    }
+}
